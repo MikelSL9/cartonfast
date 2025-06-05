@@ -1,10 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
+import Hero from "../components/Hero.astro"
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <BaseLayout title="Página Principal" description="Esta es mi página principal donde muestro todo lo relevante al sitio web">
-	<h1>Astro</h1>
-	<a href="/about/">About</a>
-	<a href="/products/">Productos</a>
+	<NavBar />
+	<Hero />
+	<Footer />	
 </BaseLayout>
 
