@@ -1,0 +1,57 @@
+---
+const products = [
+    { id: 1, name: "Caja 1", image: "/public/producto1.png" },
+    { id: 2, name: "Caja 2", image: "/public/producto2.png" },
+    { id: 3, name: "Caja 3", image: "/public/producto3.png" },
+];
+---
+
+<style>
+.product-list {
+    background:#f3f0e8;
+    padding: 20px;
+    text-align: center;
+}
+.products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.product {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+}
+.product img {
+    max-width: 100%;
+    height: auto;
+}
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3B7A57;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.btn:hover {
+    background-color: #6FBF73;
+}
+</style>
+
+<section class="product-list">
+    <h2>Nuestros Productos</h2>
+    <div class="products">
+        {products.map(product => (
+            <div class="product" key={product.id}>
+                <img src={product.image} alt={product.name} />
+                <h3>{product.name}</h3>
+                <p>{product.price}</p>
+            </div>
+        ))}
+    </div>
+    <a href="/products" class="btn">Ver Más</a>
+</section>

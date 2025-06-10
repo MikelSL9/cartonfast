@@ -1,13 +1,37 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro"
-import Hero from "../components/Hero.astro"
-import NavBar from "../components/NavBar.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "@layouts/BaseLayout.astro"
+import Hero from "@components/Hero.astro"
+import ProductList from "@components/ProductList.astro"
 ---
 
-<BaseLayout title="Página Principal" description="Esta es mi página principal donde muestro todo lo relevante al sitio web">
-	<NavBar />
+<style>
+	body {
+  		min-height: 100vh;
+		margin: 0;
+	}
+
+</style>
+<BaseLayout title="Página Principal" description="Fabricación de cajas de cartón personalizadas y ecológicas.">
 	<Hero />
-	<Footer />	
+	<ProductList />
+	<section class="section-features">
+        <h2>¿Por qué elegir Cartonfast?</h2>
+        <ul>
+            <li>✔️ Materiales de cartón de máxima calidad</li>
+            <li>✔️ Personalización de cajas con tu logo</li>
+            <li>✔️ Atención personalizada y asesoramiento</li>
+        </ul>
+    </section>
+
+    <style>
+        .section-features {
+			padding: 40px 20px;
+			margin: 40px auto;
+            background: #f3f0e8;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            text-align: center;
+        }
+    </style>
 </BaseLayout>
 

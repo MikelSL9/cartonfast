@@ -1,26 +1,129 @@
 ---
+import Email from "@components/icons/Email.astro";
+import Call from "@components/icons/Call.astro";
+import Location from "@components/icons/Location.astro";
 ---
 
 <style>
-    footer {
-        height: 70px;
-        background-color: #363633;
-        color: #fff;;
-        font-size: 0.5rem;
-    }
+  footer {
+    width: 100%;
+    color: #fff;
+    font-family: "Lexend", sans-serif;
+  }
 
-    footer div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px 0;
-    }
+  .footer-container {
+    background-color: #363633;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 auto;
+    padding: 40px;
+  }
 
+  .footer-col {
+    min-width: 220px;
+    margin: 0 20px;
+  }
+
+  .footer-title {
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+
+  .footer-info,
+  .footer-links {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .footer-info > div {
+    margin-bottom: 14px;
+  }
+
+  .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: #6fbf73;
+  }
+
+  .footer-bottom {
+    background-color: #232321;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.5rem;
+  }
+
+  .footer-location {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: -2px;
+  }
+
+  .footer-call a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .footer-email a {
+    display: flex;
+    color: #fff;
+    text-decoration: none;
+    align-items: center;
+    gap: 10px;
+  }
 </style>
 
 <footer>
-    <div>
-        <h1>&copy; 2025 - Cartonfast, S.A. - Todos los derechos reservados</h1>
+  <div class="footer-container">
+    <div class="footer-col">
+      <div class="footer-title">CARTONFAST, S.A.</div>
+      <div class="footer-info">
+        <div class="footer-location">
+          <Location />
+          Ctra. Sánta Bárbara, Km 20.2 - 43560 - La Sénia (Tarragona)<br />
+        </div>
+        <div class="footer-call">
+          <a href="tel:977570324">
+            <Call />
+            977 570 324<br />
+          </a>
+        </div>
+
+        <div class="footer-email">
+          <a href="mailto:info@cartonfast.com" style="color:#fff;">
+            <Email />
+            info@cartonfast.com
+          </a>
+        </div>
+      </div>
     </div>
-    
+    <div class="footer-col">
+      <div class="footer-title">INFORMACIÓN</div>
+      <div class="footer-links">
+        <a href="#">Nota Legal</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Devoluciones</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <h1>&copy; 2025 - Cartonfast, S.A. - Todos los derechos reservados</h1>
+  </div>
 </footer>

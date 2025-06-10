@@ -1,4 +1,8 @@
 ---
+import NavBar from '@components/NavBar.astro';
+import Footer from '@components/Footer.astro';
+import '@fontsource-variable/lexend';
+
 const { title, description } = Astro.props;
 ---
 <html lang="es">
@@ -8,7 +12,6 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="decription" content={description} />
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
     <title>{title}</title>
   </head>
@@ -19,8 +22,12 @@ const { title, description } = Astro.props;
     }
 
     body {
-      font-family: Lexend;
-      
+      font-family: 'Lexend Variable';
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+  
     }
   </style>
 
@@ -31,6 +38,10 @@ const { title, description } = Astro.props;
   </style>
 
   <body>
-    <slot />
+    <NavBar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
