@@ -1,30 +1,64 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro"
-import Hero from "@components/Hero.astro"
-import ProductList from "@components/ProductList.astro"
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/Hero.astro";
+import ProductList from "@components/ProductList.astro";
+import Star from "@components/icons/Star.astro";
+import Box from "@components/icons/Box.astro";
+import Message from "@components/icons/Message.astro";
 ---
 
-<BaseLayout title="Página Principal" description="Fabricación de cajas de cartón personalizadas y ecológicas.">
-	<Hero />
-	<ProductList />
-	<section class="section-features">
-        <h2>¿Por qué elegir Cartonfast?</h2>
-        <ul>
-            <li>✔️ Materiales de cartón de máxima calidad</li>
-            <li>✔️ Personalización de cajas con tu logo</li>
-            <li>✔️ Atención personalizada y asesoramiento</li>
-        </ul>
-    </section>
+<BaseLayout
+  title="Página Principal"
+  description="Fabricación de cajas de cartón personalizadas y ecológicas."
+>
+  <Hero />
+  <ProductList />
+  <section class="section-features">
+    <h2>¿Por qué elegir Cartonfast?</h2>
+    <div class="features-row">
+      <div class="feature-item">
+        <!-- Sustituye este SVG por el que quieras -->
+        <Star />
+        <span>Materiales de cartón de máxima calidad</span>
+      </div>
+      <div class="feature-item">
+        <Box />
+        <span>Personalización de cajas con tu logo</span>
+      </div>
+      <div class="feature-item">
+        <Message />
+        <span>Atención personalizada y asesoramiento</span>
+      </div>
+    </div>
+  </section>
 
-    <style>
-        .section-features {
-			padding: 40px 20px;
-			margin: 40px auto;
-            background: #f3f0e8;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            text-align: center;
-        }
-    </style>
+  <style>
+    .section-features {
+      padding: 40px 20px;
+      background: #fff;
+      text-align: center;
+    }
+    .features-row {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 220px;
+    }
+    .feature-item svg {
+      margin-bottom: 16px;
+      width: 100px;
+      height: 100px;
+    }
+    .feature-item span {
+      font-size: 1.1rem;
+      color: #000;
+    }
+  </style>
 </BaseLayout>
-

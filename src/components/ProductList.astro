@@ -14,8 +14,9 @@ const products = [
 }
 .products {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 100px;
 }
 .product {
     border: 1px solid #ccc;
@@ -46,10 +47,9 @@ const products = [
     <h2>Nuestros Productos</h2>
     <div class="products">
         {products.map(product => (
-            <div class="product" key={product.id}>
+            <div class="product">
                 <img src={product.image} alt={product.name} />
                 <h3>{product.name}</h3>
-                <p>{product.price}</p>
             </div>
         ))}
     </div>
