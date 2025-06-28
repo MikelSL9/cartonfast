@@ -1,70 +1,113 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro"
+import BaseLayout from "@layouts/BaseLayout.astro";
 
 const productos = [
-  { nombre: "Caja estándar", descripcion: "Caja de cartón resistente para envíos.", imagen: "/producto1.png" },
-  { nombre: "Caja reforzada", descripcion: "Ideal para objetos pesados.", imagen: "/producto2.png" },
-  { nombre: "Caja pequeña", descripcion: "Perfecta para pequeños productos.", imagen: "/producto3.png" },
-  { nombre: "Caja personalizada", descripcion: "Personaliza tu caja con tu logo.", imagen: "/producto1.png" },
+  {
+    nombre: "Caja americana",
+    descripcion: "Caja de cartón resistente para envíos.",
+    imagen: "/producto1.webp",
+  },
+  {
+    nombre: "Plancha de cartón",
+    descripcion: "Ideal para objetos pesados.",
+    imagen: "/producto2.webp",
+  },
+  {
+    nombre: "Cajas gran formato",
+    descripcion: "Perfecta para pequeños productos.",
+    imagen: "/producto3.webp",
+  },
+  {
+    nombre: "Cantoneras de cartón",
+    descripcion: "Personaliza tu caja con tu logo.",
+    imagen: "/producto1.webp",
+  },
+  {
+    nombre: "Cantoneras rígidas",
+    descripcion: "Personaliza tu caja con tu logo.",
+    imagen: "/producto1.webp",
+  },
 ];
 ---
 
- <style>
-    .productos-main {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px 20px;
-    }
-    .productos-titulo {
-      text-align: center;
-      margin-bottom: 40px;
-      color: #363633;
-      letter-spacing: 1px;
-    }
-    .productos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 32px;
-    }
-    .producto-card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      padding: 24px;
-      text-align: center;
-      transition: box-shadow 0.2s;
-    }
-    .producto-card:hover {
-      box-shadow: 0 4px 16px rgba(111,191,115,0.15);
-    }
-    .producto-imagen {
-      width: 100%;
-      max-width: 180px;
-      margin-bottom: 16px;
-      border-radius: 6px;
-    }
-    .producto-nombre {
-      color: #363633;
-      margin-bottom: 8px;
-      font-size: 1.2rem;
-    }
-    .producto-descripcion {
-      color: #555;
-      font-size: 1rem;
-    }
-  </style>
+<style>
+  .productos-main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 100px 20px;
+  }
+
+  .productos-titulo {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #363633;
+    letter-spacing: 1px;
+  }
+
+  .productos-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .producto-card {
+    background: #fff;
+    flex: 1 1 280px;
+    max-width: 280px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    text-align: center;
+    transition: box-shadow 0.2s;
+    overflow: hidden;
+  }
+
+  .producto-card:hover {
+    box-shadow: 0 4px 16px rgba(111, 191, 115, 0.15);
+  }
+
+  .producto-imagen {
+    width: 100%;
+    max-width: 180px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .producto-card:hover .producto-imagen {
+    transform: scale(1.08);
+  }
+
+  .producto-nombre {
+    color: #363633;
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+  }
+
+  .producto-descripcion {
+    color: #555;
+    font-size: 1rem;
+  }
+</style>
 
 <BaseLayout title="Productos">
   <main class="productos-main">
     <h1 class="productos-titulo">Nuestros productos</h1>
-    <div class="productos-grid">
-      {productos.map(producto => (
-        <div class="producto-card">
-          <img src={producto.imagen} alt={producto.nombre} class="producto-imagen" />
-          <h2 class="producto-nombre">{producto.nombre}</h2>
-          <p class="producto-descripcion">{producto.descripcion}</p>
-        </div>
-      ))}
+    <div class="productos-flex">
+      {
+        productos.map((producto) => (
+          <div class="producto-card">
+            <img
+              src={producto.imagen}
+              alt={producto.nombre}
+              class="producto-imagen"
+            />
+            <h2 class="producto-nombre">{producto.nombre}</h2>
+            <p class="producto-descripcion">{producto.descripcion}</p>
+          </div>
+        ))
+      }
     </div>
   </main>
 </BaseLayout>

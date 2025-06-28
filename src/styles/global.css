@@ -1,7 +1,14 @@
+@font-face {
+  font-family: 'Lexend Variable';
+  src: url('/fonts/lexend-latin-wght-normal.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
-  font-family: "Lexend Variable", sans-serif;
 }
 
 body {
@@ -10,11 +17,9 @@ body {
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
+  font-family: 'Lexend Variable', sans-serif;
 }
 
-@font-face {
-  font-family: 'Lexend Variable';
-  src: url('/fonts/lexend.woff2') format('woff2');
-  font-weight: 100 900;
-  font-display: swap;
+main {
+  flex: 1;
 }

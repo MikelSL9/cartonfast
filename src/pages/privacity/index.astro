@@ -1,0 +1,75 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<style>
+  .privacity-main {
+    max-width: 1200px;
+    margin: auto;
+    padding-top: 100px;
+  }
+
+  .privacity-title {
+    margin: 20px 0 20px 0;
+    color: #363633;
+    letter-spacing: 1px;
+  }
+
+  .privacity-content {
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #555;
+  }
+
+  .privacity-content a {
+    color: #3b7a57;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+    transition: color 0.2s ease;
+  }
+
+  .privacity-content a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 2px;
+    background: #6fbf73;
+    width: 0%;
+    opacity: 0;
+    transition:
+      width 0.3s ease,
+      opacity 0.2s ease;
+  }
+
+  .privacity-content a:hover {
+    color: #6fbf73;
+  }
+
+  .privacity-content a:hover::after {
+    width: 100%;
+    opacity: 1;
+  }
+</style>
+
+<BaseLayout title="Privacidad">
+  <main class="privacity-main">
+    <h1 class="privacity-title">Política de Privacidad</h1>
+    <section class="privacity-content">
+      <p>
+        Garantizamos la total confidencialidad de los datos que nos ha
+        proporcionado y facilitado a lo largo de su relación comercial con
+        Cartonfast S.A.. Estos pasarán a integrarse en el fichero de clientes de
+        Cartonfast S.A. con la finalidad de atender a sus peticiones y ofrecerle
+        ofertas de nuestros productos que pensamos puedan ser de su interés. En
+        cualquier momento, podrá consultar, rectificar o incluso cancelar sus
+        datos para darse de baja en nuestra base de datos y no recibir ningún
+        tipo de información comercial por nuestra parte. Si así lo desea
+        háganoslo saber a
+        <a href="mailto:info@cartonfast.com">info@cartonfast.com</a>
+      </p>
+    </section>
+  </main>
+</BaseLayout>

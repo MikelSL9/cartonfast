@@ -2,6 +2,7 @@
 import "@styles/global.css";
 import NavBar from "@components/NavBar.astro";
 import Footer from "@components/Footer.astro";
+import '@fontsource-variable/lexend';
 import { ViewTransitions } from "astro:transitions";
 
 const { title, description } = Astro.props;
@@ -10,14 +11,7 @@ const { title, description } = Astro.props;
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon2.png" />
-    <link
-      rel="preload"
-      href="/fonts/lexend.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
+    <link rel="icon" type="image/svg+xml" href="/favicon2.png" as="image"/>
     <link
       rel="preload"
       as="image"
