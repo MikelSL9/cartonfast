@@ -1,9 +1,116 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro"
+import BaseLayout from "@layouts/BaseLayout.astro";
 import NavBar from "@components/NavBar.astro";
 ---
 
+<style>
+  .about-main {
+    padding: 100px 0 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .about-flex {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-image {
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-image img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: block;
+  }
+
+  .about-text {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .about-text p,
+  .about-text h2,
+  .about-text h3 {
+    text-align: left;
+  }
+
+  .about-text p {
+    color: #555;
+    font-size: 1.1rem;
+  }
+
+  .about-carton-image {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 0 10px;
+    height: auto;
+  }
+
+  .about-carton-image img {
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+</style>
 <BaseLayout title="Sobre nosostros...">
-    <NavBar />
+  <main class="about-main">
+    <h1 class="about-title">Sobre nosotros</h1>
+    <div class="about-flex">
+      <div class="about-text">
+        <p>Llevamos más de 25 años de experiencia en el sector del embalaje.</p>
+        <h2>Nuestros principales objetivos</h2>
+        <p>
+          Dar mejor calidad de embalaje a nuestros clientes, proporcionando
+          mejor imagen a sus productos.
+        </p>
+        <p>
+          Seguir dando servicio rápido y eficaz, colaborando con el cliente para
+          que tenga siempre el mínimo stock posible.
+        </p>
+        <p>
+          Desarrollar cualquier solución de embalaje según las necesidades de
+          nuestros clientes.
+        </p>
+        <p>
+          Con todo esto queremos estar cerca de nuestros clientes para
+          ofrecerles la calidad y los acabados que sus productos merecen,
+          siempre con un servicio rápido y eficaz y siempre respetando el medio
+          ambiente ya que nuestros productos son por excelencia reciclados y
+          reciclables.
+        </p>
+      </div>
+      <div class="about-image">
+        <img
+          src="/camion.webp"
+          alt="Muestra cartón embalaje"
+          width="100%"
+          height="auto"
+        />
+      </div>
+    </div>
+    <div class="about-carton-image">
+      <img
+        src="/carton_cartonfast.webp"
+        alt="Muestra cartón embalaje"
+        width="100%"
+        height="auto"
+      />
+    </div>
+  </main>
 </BaseLayout>
-  
