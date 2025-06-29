@@ -7,6 +7,16 @@ export default function MapaLeaflet() {
     // Initialize the map
     const map = L.map("map").setView([40.63409, 0.29759], 15);
 
+    const customIcon = L.icon({
+      iconUrl: "/leaflet/marker-icon.png",
+      iconRetinaUrl: "/leaflet/marker-icon-2x.png",
+      shadowUrl: "/leaflet/marker-shadow.png",
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41],
+    });
+
     // Add a tile layer
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
@@ -14,7 +24,7 @@ export default function MapaLeaflet() {
     }).addTo(map);
 
     // Add a marker
-    L.marker([40.63463976109688, 0.3077001743660219])
+    L.marker([40.63463976109688, 0.3077001743660219], { icon: customIcon })
       .addTo(map)
       .bindPopup(
         '<h3>Cartonfast, S.A.</h3><p>Ctra. Sánta Bárbara, Km 20.2 - 43560 - La Sénia, Tarragona, España</p><a href="https://maps.app.goo.gl/HhFXGJ2Zgy5gaYFdA">Enlace a Google Maps</a> <br>'
