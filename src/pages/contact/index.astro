@@ -1,0 +1,200 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import MapaLeaflet from "@components/MapaLeaflet.jsx";
+---
+
+<style>
+  .contact-main {
+    padding: 100px 0 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-title {
+    margin: 20px 0 20px 0;
+    color: #363633;
+    letter-spacing: 2px;
+  }
+
+  .contact-flex {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .contact-form {
+    width: 60%;
+    background: #fff;
+    border-radius: 10px;
+    padding: 32px 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-form label {
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #363633;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    resize: vertical;
+  }
+
+  .contact-map {
+    width: 100%;
+    min-height: 350px;
+    background: #f3f0e8;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 1.2rem;
+  }
+
+  .contact-form button {
+    background: #3b7a57;
+    width: 10%;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.4s;
+    align-self: center;
+  }
+  .contact-form button:hover {
+    background: #6fbf73;
+  }
+
+  .popup {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #3b7a57;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .popup.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
+
+<BaseLayout title="Contacto">
+  <main class="contact-main">
+    <h1 class="contact-title">Quieres contactar con nosotros?</h1>
+    <div class="contact-flex">
+      <form
+        id="form-contact"
+        class="contact-form"
+        autocomplete="off"
+        method="POST"
+        action="https://formspree.io/f/mdkzyrro"
+      >
+        <p class="hidden">
+          <label
+            >No rellenes esto si eres una persona: <input
+              name="bot-field"
+            /></label
+          >
+        </p>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+      <div id="popup-thanks" class="popup hidden">
+        ¡Gracias por tu consulta! Te responderemos en breve.
+      </div>
+      <div class="contact-map">
+        <MapaLeaflet client:only="react" />
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector(".contact-form");
+        const popup = document.getElementById("popup-thanks");
+        const startTime = Date.now();
+
+        if (!(form instanceof HTMLFormElement) || !popup) return;
+
+        form.addEventListener("submit", function (e) {
+          const honeypot = form.querySelector('input[name="bot-field"]');
+          const elapsedTime = Date.now() - startTime;
+
+          if (honeypot && honeypot instanceof HTMLInputElement && honeypot.value !== "") {
+            e.preventDefault();
+            console.warn("Formulari bloquejat per honeypot (possiblement bot)");
+            return;
+          }
+
+          // Bloqueja si l’enviament és massa ràpid (<1 segon)
+          if (elapsedTime < 1000) {
+            e.preventDefault();
+            console.warn("Formulari enviat massa ràpid (possiblement bot)");
+            return;
+          }
+          e.preventDefault();
+
+          const formData = new FormData(form);
+
+          fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: { Accept: "application/json" },
+          })
+            .then((response) => {
+              if (response.ok) {
+                form.reset();
+                popup.classList.remove("hidden");
+                popup.classList.add("show");
+
+                setTimeout(() => {
+                  popup.classList.remove("show");
+                  popup.classList.add("hidden");
+                }, 4000);
+              } else {
+                alert("Ha habido un error. Vuelve a intentarlo.");
+              }
+            })
+            .catch(() => alert("Error en enviar el formulario."));
+        });
+      });
+    </script>
+  </main>
+</BaseLayout>

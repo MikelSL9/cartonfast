@@ -65,11 +65,13 @@ import Location from "@components/icons/Location.astro";
     font-size: 0.5rem;
   }
 
-  .footer-location {
+  .footer-location a {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-left: -2px;
+    color: #fff;
+    text-decoration: none;
   }
 
   .footer-call a {
@@ -95,8 +97,10 @@ import Location from "@components/icons/Location.astro";
       <div class="footer-title">CARTONFAST, S.A.</div>
       <div class="footer-info">
         <div class="footer-location">
+          <a href="https://maps.app.goo.gl/HhFXGJ2Zgy5gaYFdA">
           <Location />
           Ctra. Sánta Bárbara, Km 20.2 - 43560 - La Sénia (Tarragona)<br />
+          </a>
         </div>
         <div class="footer-call">
           <a href="tel:977570324">

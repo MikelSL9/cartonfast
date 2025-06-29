@@ -1,5 +1,7 @@
 ---
+
 ---
+
 <style>
   .hero-section {
     position: relative;
@@ -9,17 +11,19 @@
     text-align: center;
     color: #000;
     min-height: 500px;
-    
   }
 
   .hero-section::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url('/bosque-cajas2.webp');
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("/bosque-cajas2.webp");
     background-size: cover;
     background-position: center;
-    opacity: 0.5; 
+    opacity: 0.5;
     z-index: 1;
   }
   .hero-content {
@@ -29,6 +33,9 @@
   }
 </style>
 
+<head>
+  <link rel="preload" as="image" href="/bosque-cajas2.webp" type="image/webp" />
+</head>
 <section class="hero-section">
   <div class="hero-content">
     <h1>Bienvenidos a Cartonfast</h1>
